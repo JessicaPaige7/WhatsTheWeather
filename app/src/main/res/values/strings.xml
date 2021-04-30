@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">What\'s The Weather</string>
+    <string name="api_key">53f9d8e4213222cf517d86dc406d67fc</string>
+    <string name="web_service_url">http://api.openweathermap.org/data/2.5/</string>
 </resources>
