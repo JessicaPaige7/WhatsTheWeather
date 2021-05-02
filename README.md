@@ -5,6 +5,7 @@ A mobile application used to retrieve the weather based on the user’s current 
 ## Built With
 
 * [Android Studio](https://developer.android.com/docs)
+* Java
 
 ## Authors
 
