@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">What\'s The Weather</string>
+    <string name="api_key">ae2d456970c500670f00fb8f4893a58b</string>
+    <string name="web_service_url">https://api.openweathermap.org/data/2.5/onecall</string>
+    <string name="cannot_find_current_location">Cannot find current your location, please try again.</string>
+    <string name="invalid_url">Unfortunately the url was invalid, please try again.</string>
+    <string name="json_error">Unfortunately, there was an error finding your weather. Please try again later.</string>
+    <string name="location_permission">Please ensure the location permission has been granted. </string>
 </resources>
