@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
             }
         } catch (Exception E) {
-            Toast.makeText(getApplicationContext(), R.string.location_permission, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.location_permission, Toast.LENGTH_LONG).show();
             E.printStackTrace();
         }
 
@@ -85,10 +85,12 @@ public class MainActivity extends AppCompatActivity {
     public void BuildUpTheURL() {
         URL url = WeatherMapURL(Double.toString(dbLatitude), Double.toString(dbLongitude));
         if (url != null) {
-            GetTheWeather getTheWeather = new GetTheWeather();
-            getTheWeather.execute(url);
+            if(dbLatitude != 0.00 && dbLongitude != 0.00) {
+                GetTheWeather getTheWeather = new GetTheWeather();
+                getTheWeather.execute(url);
+            }
         } else {
-            Toast.makeText(getApplicationContext(), R.string.invalid_url, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.invalid_url, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -111,7 +113,8 @@ public class MainActivity extends AppCompatActivity {
             return new URL(strWeatherMapURL);
         } catch (Exception E) {
             E.printStackTrace();
-            Toast.makeText(getApplicationContext(), R.string.invalid_url, Toast.LENGTH_SHORT).show();
+            pbLoadingWeatherData.setVisibility(View.INVISIBLE);
+            Toast.makeText(getApplicationContext(), R.string.invalid_url, Toast.LENGTH_LONG).show();
         }
         return null;
     }
@@ -136,10 +139,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                     return new JSONObject(stringBuilder.toString());
                 } else {
-                    Toast.makeText(getApplicationContext(), R.string.json_error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.json_error, Toast.LENGTH_LONG).show();
                 }
             } catch (IOException | JSONException E) {
-                Toast.makeText(getApplicationContext(), R.string.cannot_find_current_location, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.cannot_find_current_location, Toast.LENGTH_LONG).show();
                 E.printStackTrace();
             } finally {
                 httpURLConnection.disconnect();
@@ -191,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             } catch (JSONException E) {
                 E.printStackTrace();
-                Toast.makeText(getApplicationContext(), R.string.json_error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.json_error, Toast.LENGTH_LONG).show();
             }
         }
     }

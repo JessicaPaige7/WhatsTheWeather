@@ -104,7 +104,10 @@ class LocationFinder extends Service implements LocationListener {
             Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
             context.startActivity(intent);
         });
-        alertDialog.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+        alertDialog.setNegativeButton("Cancel", (dialog, which) -> {
+            dialog.cancel();
+            System.exit(0);
+        });
         alertDialog.show();
     }
 
